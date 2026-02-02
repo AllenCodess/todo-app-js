@@ -45,17 +45,19 @@ body {
 }
 
 .additemfield {
-  width: 70%;
+  width: 75%;
   padding: 7px 4px;
   border-radius: 4px;
   border: none;
 }
 
 .add-item-btn {
-  padding: 7px 13px;
+  padding: 7px 16px;
   background-color: #1fde29;
   border: none;
   border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
 }
 
 .inputfield {
@@ -75,4 +77,5 @@ body {
   border-radius: 4px;
   color: white;
   font-size: larger;
+  cursor: pointer;
 }

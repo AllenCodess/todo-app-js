@@ -79,6 +79,14 @@ body {
   padding: 0.4rem 1rem;
   font-size: 21px;
   border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.removebtn {
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .clear-btn {

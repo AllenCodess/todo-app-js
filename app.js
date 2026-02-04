@@ -25,6 +25,8 @@ const removebtnEl = document.querySelector(".removebtn");
 
 formIdEl.addEventListener("submit", submitForm);
 ulEl.addEventListener("click", deleteItem);
+clearBtn.addEventListener("click", clearAll);
+filterInput.addEventListener("input", filterItems);
 
 //Functions
 
@@ -73,5 +75,27 @@ function deleteItem(e) {
   } else if (target.tagName === "BUTTON" && target.classList.contains("removebtn")) {
     listItem = target.parentNode;
     ulEl.removeChild(listItem);
+  }
+}
+
+function clearAll() {
+  while (ulEl.firstChild) {
+    ulEl.removeChild(ulEl.firstChild);
+  }
+  addItemFieldEl.value = "";
+}
+
+function filterItems() {
+  const filterText = filterInput.value.toLowerCase();
+  const items = ulEl.getElementsByTagName("li");
+
+  for (let i = 0; i < items.length; i++) {
+    let itemText = items[i].firstChild.textContent.toLowerCase();
+
+    if (itemText.includes(filterText)) {
+      items[i].style.display = "flex";
+    } else {
+      items[i].style.display = "none";
+    }
   }
 }

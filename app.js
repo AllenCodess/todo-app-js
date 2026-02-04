@@ -27,27 +27,34 @@ formIdEl.addEventListener("submit", submitForm);
 //Functions
 
 function submitForm(e) {
+  // if input is empty display message to user and prevent li being created
+
+  if (addItemFieldEl.value === "") {
+    alert("Please enter a valid task");
+  } else {
+    // Create element with js
+    const li = document.createElement("li");
+    // add input value to li
+    li.textContent = addItemFieldEl.value + " ";
+    li.className = "list-item";
+
+    //Create Delete Button
+    const deleteBtn = document.createElement("button");
+    deleteBtn.setAttribute("type", "button");
+    deleteBtn.className = "removebtn jsremovebtn";
+
+    // Create icon in button
+    const icon = document.createElement("i");
+    icon.className = "fa fa-minus-square";
+
+    //append changes
+    deleteBtn.appendChild(icon);
+    li.appendChild(deleteBtn);
+    ulEl.appendChild(li);
+
+    // clear the input value
+    addItemFieldEl.value = "";
+  }
+
   e.preventDefault();
-  // Create element with js
-  const li = document.createElement("li");
-  // add input value to li
-  li.textContent = addItemFieldEl.value + " ";
-  li.className = "list-item";
-
-  //Create Delete Button
-  const deleteBtn = document.createElement("button");
-  deleteBtn.setAttribute("type", "button");
-  deleteBtn.className = "removebtn jsremovebtn";
-
-  // Create icon in button
-  const icon = document.createElement("i");
-  icon.className = "fa fa-minus-square";
-
-  //append changes
-  deleteBtn.appendChild(icon);
-  li.appendChild(deleteBtn);
-  ulEl.appendChild(li);
-
-  // clear the input value
-  addItemFieldEl.value = "";
 }

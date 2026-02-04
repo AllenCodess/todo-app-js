@@ -15,7 +15,7 @@ filter items by character in the filter input and have relevant items appear in 
 // DOM ELEMENTS
 
 const formIdEl = document.getElementById("formid");
-const addItemFieldEl = document.querySelector(".additemfield");
+const addItemFieldEl = document.getElementById("clearfield");
 const filterInput = document.querySelector(".inputfield");
 const ulEl = document.querySelector(".todo-list");
 const clearBtn = document.querySelector(".clear-btn");
@@ -47,4 +47,7 @@ function submitForm(e) {
   deleteBtn.appendChild(icon);
   li.appendChild(deleteBtn);
   ulEl.appendChild(li);
+
+  // clear the input value
+  addItemFieldEl.value = "";
 }

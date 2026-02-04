@@ -29,15 +29,19 @@ ulEl.addEventListener("click", deleteItem);
 //Functions
 
 function submitForm(e) {
+  e.preventDefault();
+
+  const inputValue = addItemFieldEl.value.trim();
+
   // if input is empty display message to user and prevent li being created
 
-  if (addItemFieldEl.value === "") {
+  if (inputValue === "") {
     alert("Please enter a valid task");
   } else {
     // Create element with js
     const li = document.createElement("li");
     // add input value to li
-    li.textContent = addItemFieldEl.value + " ";
+    li.textContent = inputValue + " ";
     li.className = "list-item";
 
     //Create Delete Button
@@ -57,8 +61,6 @@ function submitForm(e) {
     // clear the input value
     addItemFieldEl.value = "";
   }
-
-  e.preventDefault();
 }
 
 function deleteItem(e) {

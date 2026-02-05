@@ -1,17 +1,3 @@
-/*
-
-Add items form input field when add item button is clicked
-
-delete items when X icon is clicked
-
-
-Clear all items when clear all button is clicked
-
-filter items by character in the filter input and have relevant items appear in the ul
-
-
-*/
-
 // DOM ELEMENTS
 
 const formIdEl = document.getElementById("formid");

@@ -105,7 +105,7 @@ function deleteItem(e) {
     if (items) {
       items = JSON.parse(items);
     } else {
-      items = {};
+      items = [];
     }
 
     let itemText = listItem.firstChild.textContent.trim();
@@ -124,6 +124,8 @@ function deleteItem(e) {
   } else if (target.tagName === "BUTTON" && target.classList.contains("removebtn")) {
     listItem = target.parentNode;
     ulEl.removeChild(listItem);
+
+    // Remove items from LocalStorage
   }
 }
 

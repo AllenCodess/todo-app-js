@@ -126,6 +126,22 @@ function deleteItem(e) {
     ulEl.removeChild(listItem);
 
     // Remove items from LocalStorage
+    let items = localStorage.getItem("todoItems");
+    if (items) {
+      items = JSON.parse(items);
+    } else {
+      items = [];
+    }
+
+    let itemText = listItem.firstChild.textContent.trim();
+
+    let updatedItems = [];
+
+    for (let i = 0; i < items.length; i++) {
+      if (items[i] !== itemText) {
+        updatedItems.push(items[i]);
+      }
+    }
   }
 }
 
@@ -133,6 +149,9 @@ function clearAll() {
   while (ulEl.firstChild) {
     ulEl.removeChild(ulEl.firstChild);
   }
+
+  //clear all saved items from local storage
+  localStorage.removeItem("todoItems");
   addItemFieldEl.value = "";
 }
 

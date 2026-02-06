@@ -15,6 +15,7 @@ Users can add tasks, filter them in real time, remove individual items, or clear
 - Delete individual tasks
 - Clear all tasks at once
 - Filter tasks by typing keywords
+- localStorage for saving items
 
 ## Built With
 

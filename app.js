@@ -99,6 +99,27 @@ function deleteItem(e) {
   if (target.tagName === "I" && target.parentNode.classList.contains("removebtn")) {
     let listItem = target.parentNode.parentNode;
     ulEl.removeChild(listItem);
+
+    // Remove items from LocalStorage
+    let items = localStorage.getItem("todoItems");
+    if (items) {
+      items = JSON.parse(items);
+    } else {
+      items = {};
+    }
+
+    let itemText = listItem.firstChild.textContent.trim();
+
+    let updatedItems = [];
+
+    for (let i = 0; i < items.length; i++) {
+      if (items[i] !== itemText) {
+        updatedItems.push(items[i]);
+      }
+    }
+
+    localStorage.setItem("todoItems", JSON.stringify(updatedItems));
+
     //target equals the "button" here and checks if it contains a class
   } else if (target.tagName === "BUTTON" && target.classList.contains("removebtn")) {
     listItem = target.parentNode;

@@ -8,13 +8,44 @@ const clearBtn = document.querySelector(".clear-btn");
 const removebtnEl = document.querySelector(".removebtn");
 
 // Event Listeners
-
+document.addEventListener("DOMContentLoaded", loadItemsFromStorage);
 formIdEl.addEventListener("submit", submitForm);
 ulEl.addEventListener("click", deleteItem);
 clearBtn.addEventListener("click", clearAll);
 filterInput.addEventListener("input", filterItems);
 
 //Functions
+
+function loadItemsFromStorage() {
+  let items = localStorage.getItem("todoItems");
+  if (items) {
+    items = JSON.parse(items);
+  } else {
+    items = [];
+  }
+
+  for (let i = 0; i < items.length; i++) {
+    // Create element with js
+    const li = document.createElement("li");
+    li.className = "list-item";
+    // add input value to li
+    li.textContent = items[i] + " ";
+
+    //Create Delete Button
+    const deleteBtn = document.createElement("button");
+    deleteBtn.setAttribute("type", "button");
+    deleteBtn.className = "removebtn jsremovebtn";
+
+    // Create icon in button
+    const icon = document.createElement("i");
+    icon.className = "fa fa-minus-square";
+
+    //append changes
+    deleteBtn.appendChild(icon);
+    li.appendChild(deleteBtn);
+    ulEl.appendChild(li);
+  }
+}
 
 function submitForm(e) {
   e.preventDefault();
@@ -45,6 +76,17 @@ function submitForm(e) {
     deleteBtn.appendChild(icon);
     li.appendChild(deleteBtn);
     ulEl.appendChild(li);
+
+    // set items to localStorage
+    let items = localStorage.getItem("todoItems");
+    if (items) {
+      items = JSON.parse(items);
+    } else {
+      items = [];
+    }
+
+    items.push(inputValue);
+    localStorage.setItem("todoItems", JSON.stringify(items));
 
     // clear the input value
     addItemFieldEl.value = "";
